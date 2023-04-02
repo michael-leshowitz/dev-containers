@@ -12,3 +12,8 @@ services:
     tty: true
     build:
       dockerfile: dockerfiles
+    environment:
+    - APPLICATION_DATABASE=jdbc:mysql://capstone-database:3306/Capstone
+    - APPLICATION_DATABASE_USER=springuser
+    - APPLICATION_DATABASE_USER_PASS=ThePassword
+    - APPLICATION_PORT=3002
