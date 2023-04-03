@@ -2,8 +2,8 @@
 
 set -e
 
+echo "installing domain"
+
 cd /home/domain-service/
 
-echo "Installing domain-service""
-
-mvn clean install
+echo "Installing domain-service"

@@ -2,16 +2,18 @@ version: "3.5"
 
 services:
   domain-services:
+    image: domain-service
     ports:
       - 3002:3002
     volumes:
       - "C:/Users/micha/.ssh/id_rsa:/root/.ssh/id_rsa:ro"
       - "C:/Users/micha/.ssh/known_hosts:/root/.ssh/known_hosts"
       - "C:/Users/micha/.gitconfig:/root/.gitconfig:ro"
+      - "./entrypoint.sh:/entrypoint.sh"
       - "./entrypoint.d:/entrypoint.d:ro"
     tty: true
     build:
-      dockerfile: dockerfiles
+      dockerfile: dockerfile
     environment:
     - APPLICATION_DATABASE=jdbc:mysql://capstone-database:3306/Capstone
     - APPLICATION_DATABASE_USER=springuser

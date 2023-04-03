@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 FROM openjdk:17
-WORKDIR /home
+WORKDIR /
 RUN microdnf install git 
 RUN microdnf install maven
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]

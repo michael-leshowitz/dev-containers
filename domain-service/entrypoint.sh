@@ -2,6 +2,8 @@
 
 set -e
 
+echo "Starting entrypoint"
+
 for file in /entrypoint.d/*.sh ; do "$file" ; done
 
 echo "Container Ready for use"
