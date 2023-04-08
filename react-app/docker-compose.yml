@@ -5,6 +5,7 @@ services:
     image: react-app-dev
     ports:
       - 8000:3000
+      - 8080:3006
     volumes:
       - "C:/Users/micha/.ssh/id_rsa:/root/.ssh/id_rsa:ro"
       - "C:/Users/micha/.ssh/known_hosts:/root/.ssh/known_hosts"
