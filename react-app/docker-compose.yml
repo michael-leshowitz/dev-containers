@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+  react-app:
+    image: react-app-dev
+    ports:
+      - 8000:3000
+    volumes:
+      - "C:/Users/micha/.ssh/id_rsa:/root/.ssh/id_rsa:ro"
+      - "C:/Users/micha/.ssh/known_hosts:/root/.ssh/known_hosts"
+      - "C:/Users/micha/.gitconfig:/root/.gitconfig:ro"
+      - "./entrypoint.sh:/entrypoint.sh"
+      - "./entrypoint.d:/entrypoint.d:ro"
+    tty: true
+    build:
+      dockerfile: dockerfile
