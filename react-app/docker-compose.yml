@@ -4,8 +4,8 @@ services:
   react-app:
     image: react-app-dev
     ports:
-      - 8000:3000
-      - 8080:3006
+      - 3000:3000
+      - 3006:3006
     volumes:
       - "C:/Users/micha/.ssh/id_rsa:/root/.ssh/id_rsa:ro"
       - "C:/Users/micha/.ssh/known_hosts:/root/.ssh/known_hosts"
@@ -13,5 +13,7 @@ services:
       - "./entrypoint.sh:/entrypoint.sh"
       - "./entrypoint.d:/entrypoint.d:ro"
     tty: true
+    environment:
+      -  WDS_SOCKET_PORT=3000
     build:
       dockerfile: dockerfile

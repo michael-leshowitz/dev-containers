@@ -1,5 +1,9 @@
 version: "3.5"
 
+networks:
+  domain-network:
+    external: true
+
 services:
   capstone-database:
     image: mysql:latest
@@ -20,7 +24,9 @@ services:
       - '3306'
       # Where our data will be persisted
     volumes:
-      - "./entrypoint.d:/entrypoint.d:ro"
+      - "./entrypoint.d:/docker-entrypoint-initdb.d:ro"
+    networks:
+      - domain-network
 # Names our volume
 volumes:
   my-db:

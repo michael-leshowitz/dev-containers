@@ -1,5 +1,9 @@
 version: "3.5"
 
+networks:
+  domain-network:
+    external: true
+
 services:
   domain-services:
     image: domain-service
@@ -14,8 +18,11 @@ services:
     tty: true
     build:
       dockerfile: dockerfile
+    networks:
+      - domain-network
     environment:
     - APPLICATION_DATABASE=jdbc:mysql://capstone-database:3306/Capstone
     - APPLICATION_DATABASE_USER=springuser
     - APPLICATION_DATABASE_USER_PASS=ThePassword
     - APPLICATION_PORT=3002
+    - FRONTEND_URL=http://localhost:3000
