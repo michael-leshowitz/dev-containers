@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  react-app:
+    image: react-app-dev
+    ports:
+      - 3000:3000
+      - 3006:3006
+    volumes:
+      - "<PATH_TO_SSH_KEY>:/root/.ssh/id_rsa:ro"
+      - "<PATH_TO_KNOWN_HOSTS:/root/.ssh/known_hosts"
+      - "<PATH_TO_GIT_CONFIG>:/root/.gitconfig:ro"
+      - "./entrypoint.sh:/entrypoint.sh"
+      - "./entrypoint.d:/entrypoint.d:ro"
+    tty: true
+    environment:
+      -  WDS_SOCKET_PORT=3000
+    build:
+      dockerfile: dockerfile

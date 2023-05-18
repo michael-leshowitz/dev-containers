@@ -1,0 +1,30 @@
+version: "3.5"
+
+networks:
+  domain-network:
+    external: true
+
+services:
+  domain-services:
+    image: domain-service
+    ports:
+      # - 3002:3002
+      - <HOST_PORT>:<CONTAINER_PORT>
+    volumes:
+      - "<PATH_TO_SSH_KEY>:/root/.ssh/id_rsa:ro"
+      - "<PATH_TO_KNOWN_HOSTS:/root/.ssh/known_hosts"
+      - "<PATH_TO_GIT_CONFIG>:/root/.gitconfig:ro"
+      - "./entrypoint.sh:/entrypoint.sh"
+      - "./entrypoint.d:/entrypoint.d:ro"
+    tty: true
+    build:
+      dockerfile: dockerfile
+    networks:
+      - domain-network
+    environment:
+      #- APPLICATION_DATABASE=jdbc:mysql://capstone-database:3306/Capstone
+    - APPLICATION_DATABASE=<DATABASE_ADDRESS>    
+    - APPLICATION_DATABASE_USER=springuser
+    - APPLICATION_DATABASE_USER_PASS=ThePassword
+    - APPLICATION_PORT= <CONTAINER_PORT>
+    - FRONTEND_URL=<FRONTEND_ADDRESS>
