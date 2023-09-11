@@ -4,4 +4,5 @@ FROM openjdk:17
 WORKDIR /
 RUN microdnf install git 
 RUN microdnf install maven
-ENTRYPOINT [ "/entrypoint.sh" ]
+RUN microdnf install vi
+ENTRYPOINT [ "/entrypoint.sh" ]`
